@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akash Kumar - Computer Vision Engineer</title>
+    <title>Akash Kumar | Computer Vision Engineer</title>
+    <meta name="description" content="Computer Vision Engineer specializing in production-grade AI systems, YOLO, PyTorch, TensorRT, and NVIDIA Jetson deployment">
     <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #7c3aed;
+            --accent: #06b6d4;
+            --dark: #0a0a0a;
+            --gray: #1f1f1f;
+            --light-gray: #2a2a2a;
+            --text: #e5e5e5;
+            --text-dim: #a1a1aa;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,570 +24,1025 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark);
+            color: var(--text);
             line-height: 1.6;
-            color: #333;
-            background: #0f0f0f;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 120px 20px 80px;
-            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(124, 58, 237, 0.15) 0%, transparent 50%);
             position: relative;
-            overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
+        .hero-grid {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="2" fill="white" opacity="0.1"/></svg>');
-            animation: matrix 20s linear infinite;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
         }
 
-        @keyframes matrix {
+        @keyframes gridMove {
             0% { transform: translateY(0); }
-            100% { transform: translateY(100px); }
+            100% { transform: translateY(50px); }
         }
 
         .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
             position: relative;
             z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease;
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--text-dim) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .hero .tagline {
+        .hero-role {
             font-size: 1.5rem;
-            margin-bottom: 15px;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease 0.2s backwards;
-        }
-
-        .hero .subtitle {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.4s backwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease 0.6s backwards;
-        }
-
-        .btn {
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
+            color: var(--primary);
             font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
+            margin-bottom: 1rem;
         }
 
-        .btn-primary {
-            background: white;
-            color: #667eea;
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            line-height: 1.8;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #667eea;
-            transform: translateY(-3px);
-        }
-
-        /* Stats Section */
-        .stats {
-            background: white;
-            padding: 60px 20px;
+        .hero-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: -40px auto 0;
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 2;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
-        .stat-item {
+        .stat {
             text-align: center;
+            padding: 1.5rem;
+            background: var(--light-gray);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            color: #667eea;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             display: block;
         }
 
         .stat-label {
-            color: #666;
-            font-size: 0.95rem;
-            margin-top: 5px;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-top: 0.5rem;
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
-        /* Section Titles */
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            text-align: center;
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .hero-visual {
             position: relative;
+            height: 500px;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 20px auto 0;
-            border-radius: 2px;
+        .code-window {
+            background: var(--gray);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
-        /* Skills Section */
+        .code-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .code-dot:nth-child(1) { background: #ff5f56; }
+        .code-dot:nth-child(2) { background: #ffbd2e; }
+        .code-dot:nth-child(3) { background: #27c93f; }
+
+        .code-line {
+            margin: 0.5rem 0;
+            opacity: 0;
+            animation: fadeInCode 0.5s forwards;
+        }
+
+        .code-line:nth-child(1) { animation-delay: 0.1s; }
+        .code-line:nth-child(2) { animation-delay: 0.2s; }
+        .code-line:nth-child(3) { animation-delay: 0.3s; }
+        .code-line:nth-child(4) { animation-delay: 0.4s; }
+        .code-line:nth-child(5) { animation-delay: 0.5s; }
+        .code-line:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInCode {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .keyword { color: #c678dd; }
+        .function { color: #61afef; }
+        .string { color: #98c379; }
+        .comment { color: #5c6370; }
+        .number { color: #d19a66; }
+
+        /* Section */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-subtitle {
+            color: var(--primary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Skills */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
-        .skill-card {
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 15px;
+        .skill-category {
+            background: var(--gray);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
-            border: 1px solid #333;
         }
 
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
-            border-color: #667eea;
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
         }
 
-        .skill-card h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
-        .skill-tags {
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .skill-items {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 0.75rem;
         }
 
-        .tag {
-            background: #2a2a2a;
-            color: #ccc;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            border: 1px solid #444;
+        .skill-tag {
+            background: var(--light-gray);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
         }
 
-        /* Projects Section */
+        .skill-tag:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Projects */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
         }
 
         .project-card {
-            background: #1a1a1a;
-            border-radius: 15px;
+            background: var(--gray);
+            border-radius: 16px;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
-            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
-            border-color: #667eea;
+            border-color: var(--primary);
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.3);
         }
 
-        .project-image {
+        .project-header {
             height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            color: white;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.5); opacity: 0.8; }
         }
 
         .project-content {
-            padding: 25px;
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
-        .project-card h3 {
-            color: #667eea;
-            margin-bottom: 12px;
-            font-size: 1.4rem;
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
         }
 
-        .project-card p {
-            color: #aaa;
-            margin-bottom: 15px;
-            line-height: 1.6;
+        .project-type {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .project-description {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .project-metrics {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--light-gray);
+            border-radius: 8px;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-dim);
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
+            gap: 0.5rem;
         }
 
         .tech-badge {
-            background: #2a2a2a;
-            color: #76d7c4;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            border: 1px solid #444;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(37, 99, 235, 0.3);
         }
 
-        /* Experience Section */
+        /* Experience */
         .timeline {
             position: relative;
-            padding-left: 50px;
+            padding-left: 3rem;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            left: 20px;
+            left: 0;
             top: 0;
             bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
         }
 
         .timeline-item {
             position: relative;
-            margin-bottom: 50px;
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid #333;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item:hover {
-            border-color: #667eea;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            margin-bottom: 3rem;
+            padding-left: 2rem;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -43px;
-            top: 35px;
-            width: 16px;
-            height: 16px;
-            background: #667eea;
+            left: -3.5rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            background: var(--primary);
+            border: 3px solid var(--dark);
             border-radius: 50%;
-            border: 4px solid #0f0f0f;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
         }
 
-        .timeline-item h3 {
-            color: #667eea;
-            font-size: 1.5rem;
-            margin-bottom: 8px;
+        .experience-header {
+            background: var(--gray);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1rem;
         }
 
-        .timeline-date {
-            color: #888;
+        .experience-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .experience-company {
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-date {
+            color: var(--text-dim);
             font-size: 0.95rem;
-            margin-bottom: 15px;
         }
 
-        .timeline-item ul {
-            color: #aaa;
-            margin-left: 20px;
+        .experience-content {
+            background: var(--gray);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .timeline-item li {
-            margin-bottom: 10px;
+        .experience-content ul {
+            list-style: none;
+            margin-left: 0;
         }
 
-        /* Contact Section */
-        .contact {
-            background: #1a1a1a;
-            padding: 80px 20px;
+        .experience-content li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-dim);
+            line-height: 1.7;
+        }
+
+        .experience-content li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: var(--gray);
+            border-radius: 24px;
+            padding: 4rem;
             text-align: center;
-            border-top: 1px solid #333;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
-            flex-wrap: wrap;
+        .contact-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
-            background: #2a2a2a;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            border: 2px solid #444;
+        .contact-subtitle {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .contact-link:hover {
-            background: #667eea;
-            border-color: #667eea;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            border-color: var(--primary);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
         }
 
         /* Footer */
         footer {
-            background: #0a0a0a;
-            color: #666;
+            background: var(--dark);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 2rem;
             text-align: center;
-            padding: 30px 20px;
-            border-top: 1px solid #1a1a1a;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
 
-            .hero .tagline {
-                font-size: 1.2rem;
+            .hero-text h1 {
+                font-size: 3rem;
             }
 
-            .section-title {
-                font-size: 2rem;
+            .hero-visual {
+                display: none;
+            }
+
+            .nav-links {
+                display: none;
             }
 
             .projects-grid,
             .skills-grid {
                 grid-template-columns: 1fr;
             }
+        }
 
-            .timeline {
-                padding-left: 30px;
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
             }
 
-            .timeline::before {
-                left: 10px;
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
             }
 
             .timeline-item::before {
-                left: -33px;
+                left: -2.25rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">AK</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="about">
+        <div class="hero-grid"></div>
         <div class="hero-content">
-            <h1>Akash Kumar</h1>
-            <p class="tagline">Computer Vision Engineer</p>
-            <p class="subtitle">Building Production-Grade AI Systems | YOLOv8 • PyTorch • TensorRT • NVIDIA Jetson</p>
-            <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            <div class="hero-text">
+                <div class="hero-role">Computer Vision Engineer</div>
+                <h1>Building AI Systems That Work in Production</h1>
+                <p class="hero-description">
+                    Specialized in deploying production-grade computer vision solutions from scratch. 
+                    2+ years turning research into real-world impact with YOLOv8, PyTorch, TensorRT, and NVIDIA Jetson.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">7+</span>
+                        <span class="stat-label">Production Deployments</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">95%+</span>
+                        <span class="stat-label">Model Accuracy</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">60%</span>
+                        <span class="stat-label">Inference Speedup</span>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        View Projects →
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        Get in Touch
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="code-window">
+                    <div class="code-header">
+                        <div class="code-dot"></div>
+                        <div class="code-dot"></div>
+                        <div class="code-dot"></div>
+                    </div>
+                    <div class="code-line"><span class="keyword">import</span> torch</div>
+                    <div class="code-line"><span class="keyword">from</span> ultralytics <span class="keyword">import</span> YOLO</div>
+                    <div class="code-line"></div>
+                    <div class="code-line"><span class="comment"># Load optimized model</span></div>
+                    <div class="code-line">model = <span class="function">YOLO</span>(<span class="string">'yolov8n.engine'</span>)</div>
+                    <div class="code-line">results = model.<span class="function">predict</span>(source, <span class="keyword">device</span>=<span class="number">0</span>)</div>
+                    <div class="code-line"></div>
+                    <div class="code-line"><span class="comment"># Deploy on Jetson Xavier</span></div>
+                    <div class="code-line"><span class="comment"># Inference: 30+ FPS @ 95% mAP</span></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <div class="stats">
-        <div class="stat-item">
-            <span class="stat-number">7+</span>
-            <span class="stat-label">Production Systems Deployed</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number">2+</span>
-            <span class="stat-label">Years Experience</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number">95%+</span>
-            <span class="stat-label">Model Accuracy</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number">60%</span>
-            <span class="stat-label">Inference Speedup</span>
-        </div>
-    </div>
-
     <!-- Skills Section -->
-    <section class="container">
-        <h2 class="section-title">Technical Expertise</h2>
+    <section id="skills">
+        <div class="section-header">
+            <div class="section-subtitle">Technical Arsenal</div>
+            <h2 class="section-title">Core Competencies</h2>
+            <p class="section-description">
+                Production-proven expertise in building, optimizing, and deploying computer vision systems at scale
+            </p>
+        </div>
+
         <div class="skills-grid">
-            <div class="skill-card">
-                <h3>🎯 Computer Vision</h3>
-                <div class="skill-tags">
-                    <span class="tag">YOLOv5/v8/v9</span>
-                    <span class="tag">Mask R-CNN</span>
-                    <span class="tag">U-Net</span>
-                    <span class="tag">DETR</span>
-                    <span class="tag">DeepSORT</span>
-                    <span class="tag">ByteTrack</span>
-                    <span class="tag">Vision Transformers</span>
+            <div class="skill-category">
+                <div class="skill-icon">🎯</div>
+                <h3>Computer Vision</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">YOLOv5/v8/v9</span>
+                    <span class="skill-tag">Mask R-CNN</span>
+                    <span class="skill-tag">U-Net</span>
+                    <span class="skill-tag">DETR</span>
+                    <span class="skill-tag">DeepSORT</span>
+                    <span class="skill-tag">ByteTrack</span>
+                    <span class="skill-tag">Vision Transformers</span>
+                    <span class="skill-tag">Object Detection</span>
+                    <span class="skill-tag">Segmentation</span>
+                    <span class="skill-tag">Tracking</span>
                 </div>
             </div>
-            <div class="skill-card">
-                <h3>🧠 Deep Learning</h3>
-                <div class="skill-tags">
-                    <span class="tag">PyTorch</span>
-                    <span class="tag">TensorFlow</span>
-                    <span class="tag">OpenCV</span>
-                    <span class="tag">ONNX</span>
-                    <span class="tag">TensorRT</span>
-                    <span class="tag">Quantization</span>
-                    <span class="tag">Model Optimization</span>
+
+            <div class="skill-category">
+                <div class="skill-icon">🧠</div>
+                <h3>Deep Learning & Optimization</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">OpenCV</span>
+                    <span class="skill-tag">ONNX</span>
+                    <span class="skill-tag">TensorRT</span>
+                    <span class="skill-tag">Quantization</span>
+                    <span class="skill-tag">Pruning</span>
+                    <span class="skill-tag">Model Compression</span>
+                    <span class="skill-tag">Detectron2</span>
+                    <span class="skill-tag">MMDetection</span>
                 </div>
             </div>
-            <div class="skill-card">
-                <h3>🤖 Generative AI</h3>
-                <div class="skill-tags">
-                    <span class="tag">LLaMA</span>
-                    <span class="tag">Mistral</span>
-                    <span class="tag">LoRA/QLoRA</span>
-                    <span class="tag">RAG Systems</span>
-                    <span class="tag">LangChain</span>
-                    <span class="tag">FAISS</span>
+
+            <div class="skill-category">
+                <div class="skill-icon">🚀</div>
+                <h3>Edge AI & Deployment</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">NVIDIA Jetson Nano</span>
+                    <span class="skill-tag">Jetson Xavier</span>
+                    <span class="skill-tag">Jetson Orin</span>
+                    <span class="skill-tag">Real-time Inference</span>
+                    <span class="skill-tag">CUDA</span>
+                    <span class="skill-tag">Edge Optimization</span>
                 </div>
             </div>
-            <div class="skill-card">
-                <h3>⚡ Edge AI & Deployment</h3>
-                <div class="skill-tags">
-                    <span class="tag">NVIDIA Jetson</span>
-                    <span class="tag">Real-time Inference</span>
-                    <span class="tag">FastAPI</span>
-                    <span class="tag">Docker</span>
-                    <span class="tag">CI/CD</span>
-                    <span class="tag">Linux</span>
+
+            <div class="skill-category">
+                <div class="skill-icon">🤖</div>
+                <h3>Generative AI & LLMs</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">LLaMA</span>
+                    <span class="skill-tag">Mistral</span>
+                    <span class="skill-tag">GPT</span>
+                    <span class="skill-tag">LoRA/QLoRA</span>
+                    <span class="skill-tag">RAG Systems</span>
+                    <span class="skill-tag">LangChain</span>
+                    <span class="skill-tag">FAISS</span>
+                    <span class="skill-tag">Vector Databases</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-icon">⚙️</div>
+                <h3>MLOps & Engineering</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Python</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-icon">📊</div>
+                <h3>Data Engineering</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">Dataset Creation</span>
+                    <span class="skill-tag">Data Annotation</span>
+                    <span class="skill-tag">CVAT</span>
+                    <span class="skill-tag">Labelme</span>
+                    <span class="skill-tag">Roboflow</span>
+                    <span class="skill-tag">Augmentation</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">Pandas</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section class="container" id="projects">
-        <h2 class="section-title">Featured Projects</h2>
+    <section id="projects">
+        <div class="section-header">
+            <div class="section-subtitle">Production Deployments</div>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-description">
+                Real-world AI systems deployed in manufacturing, surveillance, and automation
+            </p>
+        </div>
+
         <div class="projects-grid">
+            <!-- Project 1 -->
             <div class="project-card">
-                <div class="project-image">🚗</div>
+                <div class="project-header">🚗</div>
                 <div class="project-content">
-                    <h3>ANPR + Vehicle Tracking System</h3>
-                    <p>Integrated solution combining YOLOv8 detection, OCR, and DeepSORT tracking for automated traffic monitoring with 92% license plate recognition accuracy.</p>
+                    <div class="project-type">Traffic Automation</div>
+                    <h3 class="project-title">ANPR + Vehicle Tracking System</h3>
+                    <p class="project-description">
+                        End-to-end automated traffic monitoring solution combining YOLOv8 for vehicle detection, 
+                        OCR for license plate recognition, and DeepSORT for multi-object tracking. Deployed in 
+                        production for real-time traffic analysis.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">92%</span>
+                            <span class="metric-label">Plate Accuracy</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">30+</span>
+                            <span class="metric-label">FPS</span>
+                        </div>
+                    </div>
                     <div class="project-tech">
                         <span class="tech-badge">YOLOv8</span>
                         <span class="tech-badge">DeepSORT</span>
                         <span class="tech-badge">OCR</span>
                         <span class="tech-badge">FastAPI</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image">🏭</div>
-                <div class="project-content">
-                    <h3>Iron Rod Measurement System</h3>
-                    <p>Real-time industrial measurement pipeline with ±2mm accuracy, deployed on edge devices for 24/7 operation in manufacturing environments.</p>
-                    <div class="project-tech">
-                        <span class="tech-badge">OpenCV</span>
-                        <span class="tech-badge">PyTorch</span>
-                        <span class="tech-badge">Jetson</span>
                         <span class="tech-badge">TensorRT</span>
                     </div>
                 </div>
             </div>
 
+            <!-- Project 2 -->
             <div class="project-card">
-                <div class="project-image">🦺</div>
+                <div class="project-header">🏭</div>
                 <div class="project-content">
-                    <h3>PPE Detection System</h3>
-                    <p>Multi-class detection model for worker safety (helmet, vest, shoes) deployed on Jetson Xavier with real-time alerts and compliance monitoring.</p>
-                    <div class="project-tech">
-                        <span class="tech-badge">YOLOv5</span>
-                        <span class="tech-badge">Jetson Xavier</span>
-                        <span class="tech-badge">Real-time</span>
+                    <div class="project-type">Industrial Manufacturing</div>
+                    <h3 class="project-title">Automated Iron Rod Measurement</h3>
+                    <p class="project-description">
+                        Real-time computer vision pipeline for precise industrial measurement with sub-millimeter 
+                        accuracy. Deployed on edge devices for 24/7 operation, eliminating manual measurement errors 
+                        in manufacturing environments.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">±2mm</span>
+                            <span class="metric-label">Accuracy</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">80%</span>
+                            <span class="metric-label">Time Saved</span>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image">🌾</div>
-                <div class="project-content">
-                    <h3>Mustard Seed Counting</h3>
-                    <p>Tiny-object detection model with custom anchor optimization achieving 90%+ counting accuracy for agricultural quality control applications.</p>
                     <div class="project-tech">
-                        <span class="tech-badge">Custom YOLO</span>
-                        <span class="tech-badge">Data Augmentation</span>
+                        <span class="tech-badge">OpenCV</span>
+                        <span class="tech-badge">PyTorch</span>
+                        <span class="tech-badge">Jetson Nano</span>
                         <span class="tech-badge">ONNX</span>
                     </div>
                 </div>
             </div>
 
+            <!-- Project 3 -->
             <div class="project-card">
-                <div class="project-image">🍾</div>
+                <div class="project-header">🦺</div>
                 <div class="project-content">
-                    <h3>Bottle Counting System</h3>
-                    <p>YOLO-based detection with ByteTrack for accurate counting at 25+ FPS on conveyor belts, reducing manual counting errors by 95%.</p>
+                    <div class="project-type">Safety & Compliance</div>
+                    <h3 class="project-title">PPE Detection System</h3>
+                    <p class="project-description">
+                        Multi-class object detection system for worker safety compliance monitoring. Detects helmets, 
+                        safety vests, and protective shoes in real-time with instant alerts. Deployed on Jetson Xavier 
+                        for industrial sites.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">95%+</span>
+                            <span class="metric-label">Detection mAP</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">Real-time</span>
+                            <span class="metric-label">Processing</span>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">YOLOv5</span>
+                        <span class="tech-badge">Jetson Xavier</span>
+                        <span class="tech-badge">Alert System</span>
+                        <span class="tech-badge">Docker</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card">
+                <div class="project-header">🌾</div>
+                <div class="project-content">
+                    <div class="project-type">Agriculture Tech</div>
+                    <h3 class="project-title">Mustard Seed Counting System</h3>
+                    <p class="project-description">
+                        Advanced tiny-object detection model optimized for counting small agricultural objects. 
+                        Custom anchor optimization and data augmentation strategies achieved 90%+ accuracy for 
+                        quality control applications.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">90%+</span>
+                            <span class="metric-label">Counting Accuracy</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">25</span>
+                            <span class="metric-label">FPS</span>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Custom YOLO</span>
+                        <span class="tech-badge">Augmentation</span>
+                        <span class="tech-badge">ONNX</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card">
+                <div class="project-header">🍾</div>
+                <div class="project-content">
+                    <div class="project-type">Quality Control</div>
+                    <h3 class="project-title">Conveyor Belt Bottle Counting</h3>
+                    <p class="project-description">
+                        High-speed object detection and tracking system for real-time bottle counting on production 
+                        lines. ByteTrack integration ensures accurate counting even with occlusions. Reduced manual 
+                        counting errors by 95%.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">95%</span>
+                            <span class="metric-label">Error Reduction</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">25+</span>
+                            <span class="metric-label">FPS</span>
+                        </div>
+                    </div>
                     <div class="project-tech">
                         <span class="tech-badge">YOLOv8</span>
                         <span class="tech-badge">ByteTrack</span>
@@ -584,15 +1051,58 @@
                 </div>
             </div>
 
+            <!-- Project 6 -->
             <div class="project-card">
-                <div class="project-image">🛳️</div>
+                <div class="project-header">🛳️</div>
                 <div class="project-content">
-                    <h3>SAR Ship Classification</h3>
-                    <p>CNN-based classifier for synthetic aperture radar imagery with 88% accuracy, optimized for maritime surveillance applications.</p>
+                    <div class="project-type">Satellite Imagery</div>
+                    <h3 class="project-title">SAR Ship Classification</h3>
+                    <p class="project-description">
+                        Deep learning classifier for synthetic aperture radar imagery. Built custom CNN architecture 
+                        optimized for maritime surveillance applications with 88% classification accuracy on SAR data.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">88%</span>
+                            <span class="metric-label">Accuracy</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">Custom</span>
+                            <span class="metric-label">CNN</span>
+                        </div>
+                    </div>
                     <div class="project-tech">
-                        <span class="tech-badge">CNN</span>
                         <span class="tech-badge">TensorFlow</span>
-                        <span class="tech-badge">Satellite Imagery</span>
+                        <span class="tech-badge">CNN</span>
+                        <span class="tech-badge">SAR Processing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 7 -->
+            <div class="project-card">
+                <div class="project-header">📋</div>
+                <div class="project-content">
+                    <div class="project-type">Retail Automation</div>
+                    <h3 class="project-title">OCR Fridge Label Reading</h3>
+                    <p class="project-description">
+                        Custom OCR pipeline with advanced preprocessing for SKU extraction from refrigerator labels. 
+                        Handles challenging lighting conditions and text orientations with 85%+ recognition accuracy.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">85%+</span>
+                            <span class="metric-label">OCR Accuracy</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">Custom</span>
+                            <span class="metric-label">Pipeline</span>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Tesseract</span>
+                        <span class="tech-badge">OpenCV</span>
+                        <span class="tech-badge">Preprocessing</span>
                     </div>
                 </div>
             </div>
@@ -600,54 +1110,152 @@
     </section>
 
     <!-- Experience Section -->
-    <section class="container">
-        <h2 class="section-title">Professional Experience</h2>
+    <section id="experience">
+        <div class="section-header">
+            <div class="section-subtitle">Career Journey</div>
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-description">
+                Building production-grade AI systems from scratch in a fast-paced startup environment
+            </p>
+        </div>
+
         <div class="timeline">
             <div class="timeline-item">
-                <h3>Computer Vision Engineer</h3>
-                <div class="timeline-date">Bidaal Technology | Feb 2024 - Present</div>
-                <ul>
-                    <li>Architected and deployed 7+ production-ready CV systems from scratch, reducing manual inspection time by 80%</li>
-                    <li>Developed custom object detection models using YOLOv5/v8 achieving 95%+ mAP for industrial automation</li>
-                    <li>Optimized models with ONNX and TensorRT, achieving 40-60% inference speedup</li>
-                    <li>Deployed CV pipelines on NVIDIA Jetson for edge inference with real-time processing</li>
-                    <li>Built scalable REST APIs using FastAPI handling 1000+ requests/hour</li>
-                </ul>
+                <div class="experience-header">
+                    <h3 class="experience-title">Computer Vision Engineer</h3>
+                    <div class="experience-company">Bidaal Technology</div>
+                    <div class="experience-date">February 2024 - Present | Bangalore, India</div>
+                </div>
+                <div class="experience-content">
+                    <ul>
+                        <li>Architected and deployed <strong>7+ production-ready computer vision systems</strong> from scratch, reducing manual inspection time by <strong>80%</strong> in manufacturing environments</li>
+                        <li>Developed custom object detection models using <strong>YOLOv5/v8</strong> achieving <strong>95%+ mAP</strong> for industrial automation, surveillance, and quality control applications</li>
+                        <li>Implemented real-time multi-object tracking systems using <strong>DeepSORT and ByteTrack</strong> for vehicle counting and monitoring, processing <strong>30+ FPS</strong> on edge devices</li>
+                        <li>Optimized deep learning models with <strong>ONNX and TensorRT</strong>, achieving <strong>40-60% inference speedup</strong> while maintaining accuracy for real-time deployment</li>
+                        <li>Deployed computer vision pipelines on <strong>NVIDIA Jetson Nano/Xavier</strong> for edge inference, enabling offline and low-latency processing in production environments</li>
+                        <li>Built scalable <strong>REST APIs using FastAPI</strong> for model serving, handling <strong>1000+ requests/hour</strong> with sub-100ms response time</li>
+                        <li>Fine-tuned large language models (<strong>LLaMA, Mistral</strong>) using <strong>LoRA/QLoRA</strong>; developed RAG systems using FAISS and LangChain</li>
+                        <li>Collaborated with cross-functional teams to integrate AI solutions into existing workflows, ensuring seamless deployment and monitoring</li>
+                        <li><strong>Dockerized end-to-end ML pipelines</strong> for reproducibility and easy deployment across multiple environments</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="timeline-item">
-                <h3>Computer Vision Engineering Intern</h3>
-                <div class="timeline-date">Bidaal Technology | May 2023 - Jan 2024</div>
-                <ul>
-                    <li>Developed proof-of-concept CV solutions for detection, segmentation, and classification tasks</li>
-                    <li>Created and annotated custom datasets with 10,000+ images using CVAT and Labelme</li>
-                    <li>Built training pipelines using PyTorch and TensorFlow with various architectures</li>
-                    <li>Achieved 15-20% improvement in detection accuracy through hyperparameter tuning</li>
-                </ul>
+                <div class="experience-header">
+                    <h3 class="experience-title">Computer Vision Engineering Intern</h3>
+                    <div class="experience-company">Bidaal Technology</div>
+                    <div class="experience-date">May 2023 - January 2024 | Bangalore, India</div>
+                </div>
+                <div class="experience-content">
+                    <ul>
+                        <li>Developed proof-of-concept computer vision solutions for <strong>object detection, segmentation, and classification</strong> tasks across multiple domains</li>
+                        <li>Created and annotated custom datasets with <strong>10,000+ images</strong> using CVAT and Labelme; implemented data augmentation strategies to improve model generalization</li>
+                        <li>Built training pipelines using <strong>PyTorch and TensorFlow</strong>, experimenting with different architectures (ResNet, EfficientNet, YOLO) to optimize performance</li>
+                        <li>Conducted extensive model evaluation and hyperparameter tuning, achieving <strong>15-20% improvement</strong> in detection accuracy</li>
+                        <li>Developed image preprocessing pipelines using <strong>OpenCV</strong> for noise reduction, contrast enhancement, and feature extraction</li>
+                        <li>Assisted in deploying initial prototypes and conducted performance testing on various hardware configurations</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <h2 class="section-title">Let's Connect</h2>
-        <p style="color: #aaa; max-width: 600px; margin: 0 auto;">I'm open to exciting opportunities in Computer Vision, Deep Learning, and AI. Let's build something amazing together!</p>
-        <div class="contact-links">
-            <a href="mailto:akashkr19857@gmail.com" class="contact-link">
-                📧 Email
-            </a>
-            <a href="https://www.linkedin.com/in/akash-kumar-883220192/" target="_blank" class="contact-link">
-                💼 LinkedIn
-            </a>
-            <a href="https://github.com/akashkr19857" target="_blank" class="contact-link">
-                💻 GitHub
-            </a>
+    <section id="contact">
+        <div class="contact-section">
+            <h2 class="contact-title">Let's Build Something Amazing</h2>
+            <p class="contact-subtitle">
+                Open to exciting opportunities in Computer Vision, Deep Learning, and AI. 
+                Let's discuss how I can contribute to your team's success.
+            </p>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:akashkr19857@gmail.com">akashkr19857@gmail.com</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/akash-kumar-883220192/" target="_blank">Connect with me</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">💻</div>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/akashkr19857" target="_blank">View my code</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Location</h3>
+                    <p style="color: var(--text-dim); margin: 0;">Bangalore, India</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <a href="mailto:akashkr19857@gmail.com" class="btn btn-primary" style="display: inline-flex;">
+                    📩 Send me an email
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Akash Kumar. Built with passion for Computer Vision and AI.</p>
+        <div class="footer-content">
+            <p class="footer-text">© 2024 Akash Kumar. Built with passion for Computer Vision and AI.</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/akash-kumar-883220192/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/akashkr19857" target="_blank">GitHub</a>
+                <a href="mailto:akashkr19857@gmail.com">Email</a>
+            </div>
+            <p class="footer-text" style="margin-top: 1rem; font-size: 0.9rem;">
+                Specializing in YOLOv8 • PyTorch • TensorRT • NVIDIA Jetson • Production AI Systems
+            </p>
+        </div>
     </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all major sections
+        document.querySelectorAll('.project-card, .skill-category, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
