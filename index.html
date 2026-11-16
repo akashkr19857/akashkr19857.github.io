@@ -463,6 +463,30 @@
             color: var(--text-dim);
         }
 
+        .project-demo {
+            display: block;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: top;
+            background: var(--light-gray);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1.25rem;
+            margin-top: 1.25rem;
+        }
+
+        .project-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .project-links a:hover { text-decoration: underline; }
+
         .project-tech {
             display: flex;
             flex-wrap: wrap;
@@ -721,6 +745,7 @@
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#open-source">Open Source</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -756,7 +781,7 @@
                 </div>
 
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">
+                    <a href="#open-source" class="btn btn-primary">
                         View Projects →
                     </a>
                     <a href="#contact" class="btn btn-secondary">
@@ -892,6 +917,125 @@
     </section>
 
     <!-- Projects Section -->
+    <section id="open-source">
+        <div class="section-header">
+            <div class="section-subtitle">Open Source · Code + Demo Video + Measured Results</div>
+            <h2 class="section-title">End-to-End AI Projects</h2>
+            <p class="section-description">
+                Complete systems with dashboards, APIs, evaluation and tests: computer vision, edge AI, GenAI and AI agents
+            </p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <a href="https://github.com/akashkr19857/smart-traffic-analytics" target="_blank" rel="noopener">
+                    <img class="project-demo" src="https://raw.githubusercontent.com/akashkr19857/smart-traffic-analytics/main/demo/demo.gif" alt="Smart Traffic Analytics demo" loading="lazy">
+                </a>
+                <div class="project-content">
+                    <div class="project-type">Computer Vision · Edge AI</div>
+                    <h3 class="project-title">AI Smart Traffic Analytics + ANPR</h3>
+                    <p class="project-description">
+                        YOLO11 + ByteTrack on live 4K video: homography speed, wrong-way, illegal parking, counting
+                        and ANPR (fine-tuned plate detector + OCR with multi-frame voting). FastAPI + Next.js dashboard.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric"><span class="metric-value">42 FPS</span><span class="metric-label">4K, FP16 GPU</span></div>
+                        <div class="metric"><span class="metric-value">99%</span><span class="metric-label">Plate mAP50</span></div>
+                        <div class="metric"><span class="metric-value">0</span><span class="metric-label">False alarms</span></div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">YOLO11</span><span class="tech-badge">ByteTrack</span><span class="tech-badge">ANPR</span>
+                        <span class="tech-badge">FastAPI</span><span class="tech-badge">Next.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/akashkr19857/smart-traffic-analytics" target="_blank" rel="noopener">GitHub →</a>
+                        <a href="https://github.com/akashkr19857/smart-traffic-analytics/blob/main/demo/demo.mp4" target="_blank" rel="noopener">Demo video →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <a href="https://github.com/akashkr19857/smart-face-attendance" target="_blank" rel="noopener">
+                    <div class="project-header">🧑‍💼</div>
+                </a>
+                <div class="project-content">
+                    <div class="project-type">Computer Vision · Edge AI</div>
+                    <h3 class="project-title">Smart Gate Face Attendance</h3>
+                    <p class="project-description">
+                        Real-time multi-camera face attendance with anti-spoofing: SCRFD detection, ArcFace recognition,
+                        MiniFASNet liveness, multi-frame verdicts. ONNX Runtime on CUDA / TensorRT / Jetson, web dashboard.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric"><span class="metric-value">Multi</span><span class="metric-label">Cameras &amp; gates</span></div>
+                        <div class="metric"><span class="metric-value">Liveness</span><span class="metric-label">Photo/screen block</span></div>
+                        <div class="metric"><span class="metric-value">Jetson</span><span class="metric-label">TensorRT ready</span></div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">ArcFace</span><span class="tech-badge">SCRFD</span><span class="tech-badge">ONNX Runtime</span>
+                        <span class="tech-badge">TensorRT</span><span class="tech-badge">FastAPI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/akashkr19857/smart-face-attendance" target="_blank" rel="noopener">GitHub →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <a href="https://github.com/akashkr19857/dms-rfp-intelligence" target="_blank" rel="noopener">
+                    <img class="project-demo" src="https://raw.githubusercontent.com/akashkr19857/dms-rfp-intelligence/main/demo/demo.gif" alt="DMS RFP Intelligence demo" loading="lazy">
+                </a>
+                <div class="project-content">
+                    <div class="project-type">GenAI · RAG · NLP</div>
+                    <h3 class="project-title">DMS RFP Intelligence System</h3>
+                    <p class="project-description">
+                        Upload a tender, get key facts, every requirement, a compliance matrix against the company
+                        knowledge base, risks, a bid/no-bid score and a cited proposal draft. Hybrid RAG on a local LLM.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric"><span class="metric-value">100%</span><span class="metric-label">Key facts</span></div>
+                        <div class="metric"><span class="metric-value">93%</span><span class="metric-label">Compliance</span></div>
+                        <div class="metric"><span class="metric-value">0.9 s</span><span class="metric-label">Q&amp;A latency</span></div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">RAG</span><span class="tech-badge">Qdrant</span><span class="tech-badge">Reranker</span>
+                        <span class="tech-badge">Ollama</span><span class="tech-badge">Next.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/akashkr19857/dms-rfp-intelligence" target="_blank" rel="noopener">GitHub →</a>
+                        <a href="https://github.com/akashkr19857/dms-rfp-intelligence/blob/main/demo/demo.mp4" target="_blank" rel="noopener">Demo video →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <a href="https://github.com/akashkr19857/crm-ai-assistant" target="_blank" rel="noopener">
+                    <img class="project-demo" src="https://raw.githubusercontent.com/akashkr19857/crm-ai-assistant/main/demo/demo.gif" alt="CRM AI Assistant demo" loading="lazy">
+                </a>
+                <div class="project-content">
+                    <div class="project-type">AI Agents · GenAI</div>
+                    <h3 class="project-title">CRM AI Assistant (Agentic)</h3>
+                    <p class="project-description">
+                        Plain-English assistant for sales &amp; support: LangGraph intent routing, validated tool calls
+                        on CRM data, policy RAG, confirm-before-execute actions and role-based access control.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric"><span class="metric-value">97%</span><span class="metric-label">Intent accuracy</span></div>
+                        <div class="metric"><span class="metric-value">100%</span><span class="metric-label">Data answers</span></div>
+                        <div class="metric"><span class="metric-value">0</span><span class="metric-label">Access leaks</span></div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">LangGraph</span><span class="tech-badge">Tool Calling</span><span class="tech-badge">RAG</span>
+                        <span class="tech-badge">FastAPI</span><span class="tech-badge">Next.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/akashkr19857/crm-ai-assistant" target="_blank" rel="noopener">GitHub →</a>
+                        <a href="https://github.com/akashkr19857/crm-ai-assistant/blob/main/demo/demo.mp4" target="_blank" rel="noopener">Demo video →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="projects">
         <div class="section-header">
             <div class="section-subtitle">Production Deployments</div>
